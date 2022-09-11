@@ -1,18 +1,8 @@
 from brownie import accounts, config, SimpleStorage, network
+from scripts.util_scripts import get_account
 
-
-
-def get_account():
-    if(network.show_active() == "development"):
-        return accounts[0]
-    else:
-        return accounts.add(config["wallets"]['from_key'])
-        
-    
 
 def deploy_simple_storage():
-    # account = accounts.add(config["wallets"]["from_key"])
-    # print(account)
     account = get_account()
     simple_storage = SimpleStorage.deploy({"from": account})
     store_value = simple_storage.retrieve()

@@ -6,3 +6,4 @@ build/
 reports/
 web3env
 .pytest_cache
+.idea/
